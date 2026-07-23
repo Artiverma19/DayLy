@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DayLy - Your AI Sidekick</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Updated FontAwesome CDN using jsDelivr to prevent Edge tracking blocks -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Header Section -->
+    <header class="app-header">
+    <div class="logo-title">
+        <div class="logo-icon"><i class="fa-solid fa-rocket"></i></div>
+        <div class="title-text">
+            <h1>DayLy</h1>
+            <p>Your AI sidekick <i class="fa-solid fa-wand-magic-sparkles"></i></p>
+        </div>
+    </div>
+    
+    <!-- Header Badges Container -->
+    <div class="header-badges">
+        <!-- Notification Permission Button -->
+        <button id="notif-btn" class="notif-badge" title="Enable Desktop Notifications">
+            <i class="fa-solid fa-bell"></i>
+        </button>
+        
+        <div class="streak-badge" id="streak-badge" title="Daily Study Streak!">
+            <i class="fa-solid fa-fire streak-icon"></i> <span id="streak-count">0</span> day streak
+        </div>
+    </div>
+</header>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab content-tab active" id="nav-content">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Content studio
+            </button>
+            <button class="tab tracker-tab" id="nav-tracker">
+                <i class="fa-solid fa-clipboard-check"></i> Tracker
+            </button>
+        </div>
+
+        <!-- VIEW 1: Content Studio -->
+        <div class="view-section" id="content-view">
+            <div class="main-card">
+                <p class="section-label"><i class="fa-solid fa-mobile-screen-button"></i> Pick a platform</p>
+                
+                <div class="platform-buttons">
+                    <button class="platform-btn linkedin"><i class="fa-brands fa-linkedin-in"></i></button>
+                    <button class="platform-btn twitter">
+                        <svg height="18" width="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </button>
+                    <button class="platform-btn instagram"><i class="fa-brands fa-instagram"></i></button>
+                    <button class="platform-btn email"><i class="fa-regular fa-envelope"></i></button>
+                </div>
+
+                <textarea placeholder="What's your post about? Try 'my first coding project'"></textarea>
+
+                <div class="options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="hashtags" checked> # Hashtags
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="variations"> <i class="fa-regular fa-copy"></i> 3 variations
+                    </label>
+                </div>
+
+                <button class="generate-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate magic
+                </button>
+            </div>
+        </div>
+
+        <!-- VIEW 2: Advanced Task Tracker -->
+        <div class="view-section hidden" id="tracker-view">
+            
+            <!-- Daily AI Briefing Card -->
+            <div class="ai-briefing-card">
+                <i class="fa-solid fa-robot briefing-icon"></i>
+                <div class="briefing-content">
+                    <h4>Daily AI Briefing</h4>
+                    <p>You have tasks due today. Stay focused, take regular breaks, and protect your energy!</p>
+                </div>
+            </div>
+
+            <!-- Pomodoro Timer Widget -->
+            <!-- Fixed Pomodoro Focus Panel -->
+<div class="pomodoro-container">
+    <div class="pomodoro-card lofi-bg" id="pomo-card">
+        <audio id="lofi-audio" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="pomo-overlay">
+           <div class="pomo-info">
+                <i class="fa-solid fa-headphones"></i>
+                <span>Lofi Focus Beats</span>
+            </div>
+            
+            <div class="pomo-setup">
+                <input type="number" id="pomo-input" value="25" min="1" max="120" title="Set minutes">
+                <span>mins</span>
+            </div>
+
+            <div class="pomo-display" id="pomo-time">25:00</div>
+            
+            <div class="pomo-controls">
+                <button id="pomo-start"><i class="fa-solid fa-play"></i></button>
+                <button id="pomo-reset"><i class="fa-solid fa-rotate-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- Task Creation Card -->
+            <div class="main-card">
+                <p class="section-label"><i class="fa-solid fa-list-check"></i> Add a new task</p>
+                
+                <div class="task-input-stack">
+                    <input type="text" id="task-input" placeholder="What needs to be done? (Press Enter)">
+                    <div class="task-row-meta">
+                        <input type="date" id="task-date">
+                        <input type="time" id="task-time">
+                        <select id="task-energy">
+                            <option value="high">⚡ High Focus</option>
+                            <option value="medium" selected>☕ Medium</option>
+                            <option value="low">🌙 Low Energy</option>
+                        </select>
+                        <button id="add-task-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+                
+                <p class="section-label" style="margin-top: 20px;"><i class="fa-solid fa-tasks"></i> Your Study Board</p>
+                <ul id="task-list">
+                    <!-- Dynamic tasks load here -->
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

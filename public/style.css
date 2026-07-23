@@ -1,0 +1,1064 @@
+/* Import a modern, rounded font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    /* Soft, colorful background mesh */
+    background: linear-gradient(135deg, #fce4ec, #e0f7fa, #ede7f6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #2d3436;
+}
+
+
+.custom-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.app-container {
+    width: 95%;
+    max-width: 800px; /* Allows it to expand to laptop width */
+    margin: 40px auto; /* Centers the app on the screen */
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    padding: 25px;
+    /* Ensure no content breaks out of the container */
+    overflow: hidden;
+}
+
+/* Decorative background bubble behind the header */
+.app-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -20px;
+    width: 150px;
+    height: 150px;
+    background: #fce4ec;
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0.8;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24px;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    background: #6c5ce7;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+}
+
+.title-text h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    /* Playful sunset-to-electric-purple gradient */
+    background: linear-gradient(135deg, #ff7675 0%, #fd79a8 35%, #6c5ce7 70%, #00b894 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.title-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #636e72;
+}
+
+.streak-badge {
+    background: rgba(116, 185, 255, 0.2);
+    color: #0984e3;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.tab {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tab:hover {
+    transform: translateY(-2px);
+}
+
+.content-tab {
+    background: #e84393;
+    color: white;
+    box-shadow: 0 6px 15px rgba(232, 67, 147, 0.3);
+}
+
+.tracker-tab {
+    background: rgba(85, 239, 196, 0.3);
+    color: #00b894;
+}
+
+.main-card {
+    border: 1px solid #f1f2f6;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.section-label {
+    margin: 0 0 12px 0;
+    font-size: 0.9rem;
+    color: #636e72;
+    font-weight: 700;
+}
+
+.platform-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.platform-btn {
+    flex: 1;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.platform-btn:hover {
+    transform: scale(1.05);
+}
+
+.linkedin { background: #74b9ff; }
+.twitter { background: #a29bfe; }
+.instagram { background: #fd79a8; }
+.email { background: #78e08f; }
+
+textarea {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #dfe6e9;
+    border-radius: 12px;
+    padding: 14px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: none;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: #6c5ce7;
+}
+
+.options {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.checkbox-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #2d3436;
+}
+
+/* Custom Checkbox Styling */
+input[type="checkbox"] {
+    accent-color: #0984e3;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.generate-btn {
+    width: 100%;
+    background: #5f27cd;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 6px 15px rgba(95, 39, 205, 0.3);
+}
+
+.generate-btn:hover {
+    background: #341f97;
+    transform: translateY(-2px);
+}
+.output-box {
+    margin-top: 20px;
+    background: #f8f9fa;
+    border: 1px solid #dfe6e9;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: left;
+}
+
+.output-box h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: #6c5ce7;
+}
+
+.streamed-text {
+    margin: 0;
+    white-space: pre-wrap;
+    font-size: 0.95rem;
+    color: #2d3436;
+    line-height: 1.5;
+}
+/* View switching helper */
+.hidden {
+    display: none !important;
+}
+
+/* Tab active state adjustments */
+.tab {
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.tab.active {
+    opacity: 1;
+}
+
+/* Tracker Styles */
+.task-input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.task-input-row input {
+    flex: 1;
+    border: 1px solid #dfe6e9;
+    border-radius: 12px;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 0.95ln;
+    outline: none;
+}
+
+.task-input-row input:focus {
+    border-color: #00b894;
+}
+
+#add-task-btn {
+    background: #00b894;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    width: 48px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#add-task-btn:hover {
+    background: #00a383;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+#task-list li {
+    background: #f8f9fa;
+    border: 1px solid #dfe6e9;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #2d3436;
+}
+/* Streak Badge Pulsing Animation */
+.streak-badge {
+    background: rgba(253, 121, 168, 0.2);
+    color: #e84393;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.streak-icon {
+    animation: pulseFire 1.5s infinite;
+}
+
+@keyframes pulseFire {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); color: #ff7675; }
+    100% { transform: scale(1); }
+}
+
+/* AI Briefing Card */
+.ai-briefing-card {
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+    color: white;
+    border-radius: 16px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+}
+
+.briefing-icon {
+    font-size: 1.8rem;
+    background: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.briefing-content h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+}
+
+.briefing-content p {
+    margin: 0;
+    font-size: 0.82rem;
+    opacity: 0.9;
+    line-height: 1.3;
+}
+
+/* Pomodoro Timer */
+.pomodoro-card {
+    background: #fff;
+    border: 1px solid #dfe6e9;
+    border-radius: 16px;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.pomo-info {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #636e72;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.pomo-display {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #e84393;
+}
+
+.pomo-controls button {
+    background: #f1f2f6;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #2d3436;
+    transition: background 0.2s;
+}
+
+.pomo-controls button:hover {
+    background: #dfe6e9;
+}
+
+/* Task Form Stack */
+.task-input-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-input-stack input[type="text"] {
+    border: 1px solid #dfe6e9;
+    border-radius: 12px;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+}
+/* --- Task Input Responsiveness --- */
+/* --- Task Input Fixed Single Row --- */
+.task-row-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.task-row-meta input[type="date"],
+.task-row-meta input[type="time"] {
+    flex: 0 0 140px;
+    min-width: 120px;
+    border: 1px solid #dfe6e9;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    background: #f8f9fa;
+}
+
+.task-row-meta select {
+    flex: 0 0 150px;
+    min-width: 140px;
+    border: 1px solid #dfe6e9;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    background: #f8f9fa;
+}
+
+#add-task-btn {
+    flex: 0 0 48px;
+    min-width: 48px;
+    width: 48px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-task-btn {
+    background: #00b894;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#add-task-btn:hover {
+    background: #00a383;
+}
+
+/* Task List Styling */
+/* --- Revamped Study Board Tasks --- */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 450px;
+    overflow-y: auto; /* Allow scrolling up/down */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    padding-right: 8px; /* Space for the vertical scrollbar */
+}
+
+/* Make the scrollbar look elegant */
+#task-list::-webkit-scrollbar { width: 6px; }
+#task-list::-webkit-scrollbar-thumb { background: #dfe6e9; border-radius: 10px; }
+
+.task-item {
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.95), rgba(248,249,250,0.92) 45%);
+    border: 1px solid rgba(162, 159, 254, 0.35);
+    border-left: 6px solid #a29bfe; /* Vibrant purple accent line on the left */
+    box-shadow: 0 14px 28px rgba(108, 92, 231, 0.08);
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.task-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(108, 92, 231, 0.16);
+    border-left-color: #fd79a8;
+}
+
+.task-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.task-title {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #2d3436;
+    flex: 1;
+    min-width: 180px;
+    word-break: break-word;
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.task-actions select {
+    min-width: 140px;
+    padding: 10px 12px;
+    border: 1px solid #dfe6e9;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #2d3436;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    appearance: none;
+}
+
+.task-actions select:hover,
+.task-actions select:focus {
+    background: rgba(108, 92, 231, 0.14);
+    color: #2d3436;
+    border-color: #6c5ce7;
+    outline: none;
+}
+
+.status-picker {
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.status-picker.not-started {
+    border-color: #74b9ff;
+    background: rgba(116, 185, 255, 0.16);
+    color: #1a2a52;
+}
+
+.status-picker.in-progress {
+    border-color: #fd79a8;
+    background: rgba(253, 121, 168, 0.16);
+    color: #4b2b45;
+}
+
+.status-picker.completed {
+    border-color: #6c5ce7;
+    background: rgba(108, 92, 231, 0.14);
+    color: #2d2a5e;
+}
+
+.task-item.status-not-started {
+    border-left-color: #74b9ff;
+    background: radial-gradient(circle at top left, rgba(116,185,255,0.14), rgba(255,255,255,0.97));
+}
+
+.task-item.status-in-progress {
+    border-left-color: #fd79a8;
+    background: radial-gradient(circle at top left, rgba(253,121,168,0.16), rgba(255,255,255,0.98));
+}
+
+.task-item.status-completed {
+    border-left-color: #6c5ce7;
+    background: linear-gradient(135deg, rgba(255,255,255,0.97), rgba(230,226,255,0.85));
+}
+
+.task-item.status-completed .task-title {
+    color: #2d3436;
+}
+
+.delete-btn {
+    background: rgba(255, 118, 117, 0.18);
+    color: #d63031;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: #ff7675;
+    color: white;
+    transform: scale(1.1);
+}
+
+.task-sub-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.task-sub-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(209, 213, 225, 0.85);
+    color: #475569;
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.task-sub-meta span i {
+    color: #6c5ce7;
+    min-width: 18px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.ai-breakdown-btn {
+    align-self: flex-start;
+    background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(253,121,168,0.14));
+    color: #381d8c;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.ai-breakdown-btn:hover {
+    background: linear-gradient(135deg, rgba(108,92,231,0.25), rgba(253,121,168,0.22));
+    transform: translateY(-1px);
+}
+
+.subtasks-container {
+    margin-top: 6px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(242, 244, 255, 0.8);
+    border: 1px solid rgba(162, 159, 254, 0.24);
+    font-size: 0.84rem;
+    color: #4b5563;
+}
+
+.subtasks-container ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.subtasks-container li {
+    margin-bottom: 6px;
+    list-style-type: disc;
+}
+
+/* --- Focus Section Styles --- */
+
+.pomodoro-card.lofi-bg {
+    position: relative;
+    background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 240px;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 18px 50px rgba(108, 92, 231, 0.18);
+}
+
+.pomodoro-card.lofi-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(108, 92, 231, 0.35), rgba(253, 121, 168, 0.12));
+    pointer-events: none;
+}
+
+.pomo-overlay {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(108, 92, 231, 0.12);
+}
+
+.pomo-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    background: rgba(108, 92, 231, 0.12);
+    color: #6c5ce7;
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px rgba(108, 92, 231, 0.08);
+}
+
+.pomo-info i {
+    font-size: 1rem;
+    color: #6c5ce7;
+}
+
+.pomo-display {
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: #6c5ce7;
+    font-weight: 800;
+    min-width: 130px;
+    text-align: center;
+}
+
+.pomo-setup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(244, 242, 255, 0.85);
+    border: 1px solid rgba(108, 92, 231, 0.18);
+    border-radius: 16px;
+    padding: 10px 14px;
+}
+
+.pomo-setup input {
+    width: 70px;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    background: #ffffff;
+    color: #2d3436;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+}
+
+.pomo-setup span {
+    color: #6c5ce7;
+    font-weight: 700;
+}
+
+.pomo-controls {
+    display: flex;
+    gap: 14px;
+}
+
+.pomo-controls button {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 14px 18px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease;
+    min-width: 56px;
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.18);
+}
+
+.pomo-controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(108, 92, 231, 0.22);
+    filter: brightness(1.05);
+}
+
+.pomo-controls button#pomo-start.active {
+    background: linear-gradient(135deg, #341f97, #6c5ce7);
+    box-shadow: 0 16px 36px rgba(108, 92, 231, 0.28);
+}
+
+.pomo-controls button#pomo-reset {
+    background: #fd79a8;
+}
+
+/* Play/Pause/Reset Buttons */
+.pomo-controls button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pomo-controls button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+/* Mobile Responsiveness Rules */
+@media (max-width: 600px) {
+    .pomo-overlay {
+        flex-direction: column; /* Stack the elements vertically on phones */
+        text-align: center;
+    }
+    
+    .pomo-setup {
+        justify-content: center;
+    }
+}
+
+/* --- Collapsible Timer Toggle Button --- */
+.pomo-toggle-btn {
+    width: 100%;
+    background: #f3e8ff;
+    color: #6b21a8;
+    border: 1px dashed #a29bfe;
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#pomo-card {
+    overflow: visible;
+}
+
+#pomo-chevron.rotated {
+    transform: rotate(-180deg); /* Flips the arrow pointing up */
+}
+
+
+
+/* Style the actual list items inside the dropdown */
+.pomo-audio-dropdown option {
+    background: white;
+    color: #2d3436;
+    font-weight: 600;
+}
+/* --- Notification Bell Styling --- */
+.header-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notif-badge {
+    background: #f3e8ff;
+    color: #6b21a8;
+    border: 1px solid rgba(107, 33, 168, 0.1);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.notif-badge:hover {
+    background: #e9d5ff;
+    transform: scale(1.05);
+}
+
+.notif-badge.enabled {
+    background: #e8f8f5;
+    color: #00b894;
+    border-color: rgba(0, 184, 148, 0.2);
+}
+
+/* --- Social Media Share Buttons --- */
+.social-share-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    text-decoration: none;
+}
+
+.share-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.btn-twitter { background: #000000; }
+.btn-linkedin { background: #0a66c2; }
+.btn-instagram { background: #e1306c; }
+.btn-copy { background: #6c5ce7; }
+
+
+
+/* --- Editable Generated Textarea --- */
+.generated-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(107, 33, 168, 0.2);
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #2f3640;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    overflow:hidden;
+}
+
+.generated-textarea:focus {
+    border-color: #6c5ce7;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Ultra-Smooth Platform Picker Hover & Glow Effects --- */
+
+/* Target the 4 platform selector buttons at the top of your Content Studio */
+.platform-select-container button, 
+.platform-btn {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy spring transition */
+    will-change: transform, box-shadow, border-color;
+}
+
+/* Universal hover lift & brightness boost */
+.platform-select-container button:hover, 
+.platform-btn:hover {
+    transform: translateY(-6px) scale(1.08);
+    filter: brightness(1.1);
+}
+
+/* 1. LinkedIn Button Hover (Brand Blue Glow) */
+.platform-select-container button:nth-child(1):hover {
+    background-color: #0a66c2 !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 12px 25px rgba(10, 102, 194, 0.5);
+}
+
+/* 2. X / Twitter Button Hover (Sleek Dark Glow) */
+.platform-select-container button:nth-child(2):hover {
+    background-color: #000000 !important;
+    border-color: #a29bfe !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* 3. Instagram Button Hover (Vibrant Pink/Gradient Glow) */
+.platform-select-container button:nth-child(3):hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 12px 25px rgba(225, 48, 108, 0.5);
+    color: #ffffff !important;
+}
+
+/* 4. Email Button Hover (Mint Green Glow) */
+.platform-select-container button:nth-child(4):hover {
+    background-color: #00b894 !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 12px 25px rgba(0, 184, 148, 0.5);
+}
+
+/* Active Selected State Pulsing Animation */
+@keyframes platform-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+}
+
+.platform-select-container button.active, 
+.platform-btn.active {
+    transform: translateY(-3px) scale(1.05);
+    border-color: #6c5ce7 !important;
+    animation: platform-pulse 1.8s infinite;
+}
