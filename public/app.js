@@ -429,12 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fa-regular fa-copy"></i> Copy Text
                 </button>
             </div>
-            <div class="email-dispatch-box">
-                <input type="email" id="recipient-email" placeholder="Recipient's email address..." class="email-input" />
-                <button onclick="sendEditedEmail()" class="share-btn btn-email" id="email-send-btn">
-                    <i class="fa-solid fa-paper-plane"></i> Send Email
-                </button>
-            </div>
         `;
 
         const textBox = document.getElementById('editable-content-box');
@@ -473,53 +467,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.shareToTwitter = shareToTwitter;
     window.shareToLinkedIn = shareToLinkedIn;
     window.copyEditedContent = copyEditedContent;
-
-    async function sendEmailToAnyone(content) {
-    const recipientInput = document.getElementById('recipient-email');
-    const recipient = recipientInput?.value.trim();
-    const btn = document.getElementById('email-send-btn');
-
-    if (!recipient) {
-        alert('Please enter a valid recipient email address.');
-        return;
-    }
-
-    if (!btn) return;
-
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-    btn.disabled = true;
-
-    try {
-        const response = await fetch('/api/send-email', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                recipient,
-                subject: 'Generated Content from DayLy Studio',
-                message: content
-            })
-        });
-
-        const data = await response.json().catch(() => ({}));
-
-        if (response.ok && data.success) {
-            alert(`Email successfully dispatched to ${recipient}! 📧`);
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent!';
-        } else {
-            const detail = data?.error || `Server returned ${response.status}`;
-            alert('Failed to send email: ' + detail);
-            btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Email';
-            btn.disabled = false;
-        }
-    } catch (err) {
-        console.error('Error:', err);
-        alert('Network error while sending email.');
-        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Email';
-        btn.disabled = false;
-    }
-}
-
-window.sendEmailToAnyone = sendEmailToAnyone;
 
 // Global helper function for copying text to clipboard
 function copyToClipboard(text) {
