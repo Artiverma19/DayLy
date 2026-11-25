@@ -1,24 +1,15 @@
 import express from 'express';
-import { GoogleGenAI } from '@google/genai';
-import dotenv from 'dotenv';
-
-// Load the secret .env variables FIRST
-dotenv.config();
-
-const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
-if (!apiKey) {
-    throw new Error('Gemini API key missing. Set GEMINI_API_KEY or GOOGLE_API_KEY in your environment.');
-}
+import { generateText } from '../utils/gemini.js';
 
 const router = express.Router();
-
-// Now initialize Gemini safely with the Developer API
-const ai = new GoogleGenAI({ apiKey });
 
 // ROUTE: Generate social media & message content
 router.post('/generate', async (req, res) => {
     try {
         const { platform, topic, includeHashtags, count } = req.body;
+        if (!topic || !String(topic).trim()) {
+            return res.status(400).json({ error: 'Topic is required.' });
+        }
 
         let prompt = `You are an expert content creator for students. Generate content about: "${topic}".\n\n`;
 
@@ -42,15 +33,12 @@ router.post('/generate', async (req, res) => {
             prompt += ` Provide ${count} distinct options labeled Option 1, Option 2, etc.`;
         }
 
-        const model = process.env.GEMINI_MODEL || 'gemini-flash-latest';
-        console.log('Content generate request', { platform, topic, includeHashtags, count, model, hasApiKey: !!apiKey });
+        console.log('Content generate request', { platform, topic, includeHashtags, count });
 
-        const response = await ai.models.generateContent({
-            model,
-            contents: prompt,
-        });
+        const { text, model } = await generateText(prompt);
+        console.log('Content generated successfully with model:', model);
 
-        res.json({ text: response.text || '' });
+        res.json({ text });
 
     } catch (error) {
         console.error('Gemini API Error:', error?.message || error);

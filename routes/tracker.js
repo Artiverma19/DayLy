@@ -1,15 +1,7 @@
 import express from 'express';
-import { GoogleGenAI } from '@google/genai';
-import dotenv from 'dotenv';
-
-dotenv.config();
-const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
-if (!apiKey) {
-    throw new Error('Gemini API key missing. Set GEMINI_API_KEY or GOOGLE_API_KEY in your environment.');
-}
+import { generateText } from '../utils/gemini.js';
 
 const router = express.Router();
-const ai = new GoogleGenAI({ apiKey });
 
 let tasks = [
     { 
@@ -75,13 +67,9 @@ router.post('/breakdown/:id', async (req, res) => {
 
         const prompt = `Break down this student task into 3 clear, actionable subtasks. Return ONLY a valid JSON array of strings, with no markdown formatting or extra text. Task: "${task.text}"`;
 
-        const model = process.env.GEMINI_MODEL || 'gemini-flash-latest';
-        const response = await ai.models.generateContent({
-            model,
-            contents: prompt
-        });
+        const { text } = await generateText(prompt);
 
-        let textResponse = response.text.trim();
+        let textResponse = text.trim();
         textResponse = textResponse.replace(/^```json/, '').replace(/^```/, '').replace(/```$/, '').trim();
         const subtasks = JSON.parse(textResponse);
 

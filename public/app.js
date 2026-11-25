@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Content Studio Logic
     const generateBtn = document.querySelector('.generate-btn');
-    const textarea = document.querySelector('textarea');
+    const textarea = contentView.querySelector('textarea');
     const platformBtns = document.querySelectorAll('.platform-btn');
     const hashtagsCheckbox = document.getElementById('hashtags');
     const variationsCheckbox = document.getElementById('variations');
@@ -71,9 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             });
 
-            if (!response.ok) throw new Error('Failed to generate content');
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(result?.error || 'Failed to generate content');
+            }
 
-            const result = await response.json();
             let outputBox = document.querySelector('.output-box');
             if (!outputBox) {
                 outputBox = document.createElement('div');
@@ -84,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayGeneratedContent(result.text || 'No content returned.');
         } catch (error) {
             console.error('Error:', error);
-            alert('Something went wrong connecting to the AI.');
+            alert(`Something went wrong connecting to the AI: ${error.message}`);
         } finally {
             generateBtn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Generate magic';
             generateBtn.disabled = false;
@@ -417,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         outputContainer.innerHTML = `
-            <textarea id="editable-content-box" class="generated-textarea" rows="8">${aiText}</textarea>
+            <textarea id="editable-content-box" class="generated-textarea" rows="8"></textarea>
             <div class="social-share-container">
                 <button onclick="shareToTwitter()" class="share-btn btn-twitter">
                     <i class="fa-brands fa-x-twitter"></i> Post to X
@@ -432,7 +434,10 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         const textBox = document.getElementById('editable-content-box');
-        if (textBox) initAutoResize(textBox);
+        if (textBox) {
+            textBox.value = aiText;
+            initAutoResize(textBox);
+        }
     }
 
     function getEditedText() {
